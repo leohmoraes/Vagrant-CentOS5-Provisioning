@@ -7,7 +7,7 @@
 ##################################################################
 
 # Set variables for your username and password:
-username=rubens
+username=leo
 password=1234
 
 # Set up shell script for installing everything needed for the box:
@@ -21,15 +21,18 @@ yum install -y  vim-enhanced awk git wget url gcc htop tree unzip dkms net-tools
 yum install -y php && sudo yum install -y php-pear  
 yum install -y php-pecl-apc php-pecl-imagick php-pecl-json php-pecl-memcache php-pecl-memcached php-pecl-xdebug  php-pecl-zip
 
+#'./configure' '--disable-fileinfo' '--enable-bcmath' '--enable-calendar' '--enable-ftp' '--enable-libxml' '--enable-mbstring' '--enable-pdo=shared' '--enable-sockets' '--enable-zip' '--prefix=/usr/local' 
+#'--with-apxs2=/usr/local/apache/bin/apxs' '--with-curl=/opt/curl/' '--with-gd' '--with-imap=/opt/php_with_imap_client/' '--with-imap-ssl=/usr' '--with-jpeg-dir=/usr' '--with-kerberos' '--with-libdir=lib64' '--with-libxml-dir=/opt/xml2/' '--with-mcrypt=/opt/libmcrypt/' '--with-mysql=/usr' '--with-mysql-sock=/var/lib/mysql/mysql.sock' '--with-openssl=/usr' '--with-openssl-dir=/usr' 
+#'--with-pcre-regex=/opt/pcre' '--with-pdo-mysql=shared' '--with-pdo-sqlite=shared' '--with-pic' '--with-png-dir=/usr' '--with-xpm-dir=/usr' '--with-zlib' '--with-zlib-dir=/usr'
 
 echo "Adding hostname and IP to hosts file..."
 # Set hostname for the machine and add the entry in /etc/hosts file:
 echo "192.168.50.123  centos5.home.local centos5" >> /etc/hosts
 
-echo "Setting european ntp servers..."
+#echo "Setting european ntp servers..."
 # Change centos ntp servers by european ones on ntp.conf: 
-sed -i 's/centos/europe/g' /etc/ntp.conf
-service ntpd start
+#sed -i 's/centos/europe/g' /etc/ntp.conf
+#service ntpd start
 
 echo "Setting default language..."
 # Set language for users:
@@ -101,18 +104,6 @@ alias lk='ls -lSr'      #  Sort by size, biggest last.
 alias lt='ls -ltr'      #  Sort by date, most recent last.
 alias lc='ls -ltc'      #  Sort by/show change time,most recent first.
 alias lu='ls -ltu'      #  Sort by/show access time,most recent first.
-
-# Network aliases:
-#=================
-
-alias pubip='curl ip.appspot.com'           # My public IP address
-alias netlisten='lsof -i -P | grep LISTEN'  # Find active network listeners
-alias pingle='ping google.com'              # Ping google.com
-alias speedtest='wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test500.zip'  # Network Speedtest
-#Query all DNS records in a domain:
-digdomain() {
-    dig -tAXFR $1
-}
 
 
 # Other aliases:
